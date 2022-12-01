@@ -1,30 +1,32 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { increment, decrement, reset } from 'src/counter.actions';
+import { State } from 'src/counter.reducer';
+import { selectCount } from 'src/counter.selector';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: []
 })
 export class AppComponent {
-  title = 'ngrx-presentation';
-  // count$: Observable<number>;
+  inputCount = 1;
+  count$: Observable<number>
 
-  constructor() {
-    // TODO: Connect `this.count$` stream to the current store `count` state
+  constructor(private store: Store<{ rootState: State }>) {
+    this.count$ = store.select(selectCount);
   }
 
-  increment() {
-    // TODO: Dispatch an increment action
+  increment(amount: number) {
+    this.store.dispatch(increment({ amount }));
   }
 
-  decrement() {
-    // TODO: Dispatch a decrement action
+  decrement(amount: number) {
+    this.store.dispatch(decrement({ amount }));
   }
 
   reset() {
-    // TODO: Dispatch a reset action
+    this.store.dispatch(reset());
   }
-
-
 }
