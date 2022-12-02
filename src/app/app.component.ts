@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { increment, decrement, reset } from 'src/counter.actions';
-import { State } from 'src/counter.reducer';
 import { selectCount } from 'src/counter.selector';
+import { State } from 'src/counter.state';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import { selectCount } from 'src/counter.selector';
   styleUrls: []
 })
 export class AppComponent {
-  inputCount = 1;
+  inputValue = 2;
   count$: Observable<number>
 
   constructor(private store: Store<{ rootState: State }>) {
