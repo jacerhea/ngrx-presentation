@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { increment, decrement, reset } from 'src/counter.actions';
@@ -8,10 +8,10 @@ import { State } from 'src/counter.state';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: []
+  styleUrls: [],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  inputValue = 2;
   count$: Observable<number>
 
   constructor(private store: Store<{ rootState: State }>) {

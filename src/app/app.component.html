@@ -2,12 +2,8 @@
 
 
 
-<input type="number" [(ngModel)]="inputValue">
+<button (click)="increment(1)">Increment</button>
 
-
-
-<button (click)="increment(inputValue)">Increment</button>
-
-<button (click)="decrement(inputValue)">Decrement</button>
+<button (click)="decrement(1)">Decrement</button>
 
 <button (click)="reset()">Reset Counter</button>
